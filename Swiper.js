@@ -409,7 +409,7 @@ class Swiper extends Component {
   swipeRight = (mustDecrementCardIndex = false) => {
     this.setState({ overlayTypeOnSwipeCard: 'right' }, () => {
       this.swipeCard(
-        this.props.onSwipedRight,
+        this.props.onSwipedTop,
         this.props.horizontalThreshold,
         0,
         mustDecrementCardIndex
@@ -424,8 +424,8 @@ class Swiper extends Component {
     this.setState({ overlayTypeOnSwipeCard: 'top' }, () => {
       this.swipeCard(
         this.props.onSwipedTop,
-        this.props.verticalThreshold,
         0,
+        -this.props.verticalThreshold,
         mustDecrementCardIndex
       );
       setTimeout(() => {
