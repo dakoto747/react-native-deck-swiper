@@ -421,12 +421,17 @@ class Swiper extends Component {
   };
 
   swipeTop = (mustDecrementCardIndex = false) => {
-    this.swipeCard(
-      this.props.onSwipedTop,
-      0,
-      -this.props.verticalThreshold,
-      mustDecrementCardIndex
-    );
+    this.setState({ overlayTypeOnSwipeCard: 'top' }, () => {
+      this.swipeCard(
+        this.props.onSwipedTop,
+        this.props.verticalThreshold,
+        0,
+        mustDecrementCardIndex
+      );
+      setTimeout(() => {
+        this.setState({ overlayTypeOnSwipeCard: null });
+      }, this.props.swipeAnimationDuration - 150);
+    });
   };
 
   swipeBottom = (mustDecrementCardIndex = false) => {
